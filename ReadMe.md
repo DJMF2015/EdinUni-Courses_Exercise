@@ -1,4 +1,4 @@
-## Exercise
+# EdinUniTest-Courses_Exercise
 ### Introduction
 For this exercise, we're going to make some amendments to some HTML & JS we've provided.
 
@@ -22,15 +22,16 @@ The weighting should be displayed as a percentage to 2 decimal places. Update js
 #### 2. Display the topics per course.  Yes
 Beneath the course title, display a list of the topics on each course. You can see this data defined for each course in js/data.js. There is a comment noting where this should appear in js/templates.js.
 
-#### 3. Add the reading list per course. NO
+#### 3. Almost Add the reading list per course. Need to fix image thumbnail and sort list
 Additionally, list in order the reading list of a course. The output should be in ascending order by the due date. You can see this data for each course in js/data.js. You should display the book title, author, and a thumbnail of the book cover. There is a comment noting where this should appear in js/templates.js.
 
-#### 4. Calculate and display the Overall Course Mark. No
+#### 4. Calculate and display the Overall Course Mark. Yes
 Each assessment has a weighting defining how much that assessment contributes to the overall course.
 Using the marks and weighting of each assessment, update js/templates.js to display the final overall course mark for each course. This should be rounded to the nearest integer.
 
-#### 5. Show grades based on the marks.
+#### 5. Show grades based on the marks. NO
 Grades are defined as below based on marks:
+
 #### Mark	Grade	Colour
 | Mark      | Grade | Colour |
 |-----------|:-----:|--------|
@@ -42,7 +43,7 @@ Grades are defined as below based on marks:
 | 50 - 59   | C     | Orange |
 | 60 - 69   | B     | Green  |
 | 70 - 100  | A     | Green  |
-
+|   |   |   |
 Using the Bootstrap 3 .label class, display the grade next to each mark on all of the assessments in the colour specified per grade.
 
 #### 6. Add in the Overall Grade NO

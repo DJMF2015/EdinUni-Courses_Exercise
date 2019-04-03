@@ -1,6 +1,6 @@
 const assessmentTemplate = function(assessment) {
   console.log(assessment.name)
-  //diplsay weighting per course , course name and mark available
+  //display weighting per course , course name and mark available
   return `
   <tr>
   <td>${assessment.name}</td>
@@ -8,6 +8,7 @@ const assessmentTemplate = function(assessment) {
   <td>${assessment.mark}</td>
   </tr>  `;
 }
+
 
 //  2. Display the topics per course. topics for Each
 // Check if there are no assessments.
@@ -17,22 +18,50 @@ const assessmentTemplateHelper = function(course){
   for (let assess of course.assessments){
     courses += course.readingList
     result += assessmentTemplate(assess)
-    console.log(assess) //arry of assessments
-    console.log(course)//array of courses (all)
-    console.log(course.readingList)//all attributes of readinglist
+    // readingListTemplateHelper(course)
   }
   return result;
 }
 
-//3 readinglist in ascending order for each course with title and author and yhumnail images
+const courseAndReadingListTemplate = function(course) {
+  return `
+  <h3>Reading List</h3>
+  <div class="reading-list-wrapper">
+  ${readingListTemplateHelper(course)}
+  </div>
+  `
 
+}
+
+const readingListTemplateHelper = function(course){
+  let output = ''
+ if ( course.readingList.length ===0) return `<tr colspan="100%"><td>ReadingList Unavailable</td></tr>`;
+  for (value of course.readingList){
+    if (value.image === null){
+      value.image = '404.png';
+    }
+    output += readingListTemplate(value);
+  }
+  return output
+}
+
+const readingListTemplate = function(read) {
+  //3 readinglist in ascending order
+  return `
+  <div class="reading-list-item">
+  <p><b>${read.title}</b></p>
+  <p>By ${read.author}</p>
+  <p>  ${read.image}</p>
+  </div>
+  <tr>
+  `;
+}
 
 //4. Show grades based on the marks.
-
+//display weighting per course , course name and mark available
 
 //5. Calculate and display the overall course mark.
 //Add in the overall grade to be shown next to the overall final course mark
-
 
 const courseTemplate = function(course) {
   return `
@@ -40,6 +69,7 @@ const courseTemplate = function(course) {
   <h3>${course.id}
   ${course.name}</h3>
   <h4>${course.topics}</h4>
+  ${courseAndReadingListTemplate(course)}
   <table class="table">
   <!-- Add Grade & Overall Grade here -->
   <thead>

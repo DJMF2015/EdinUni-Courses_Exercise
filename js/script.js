@@ -1,7 +1,7 @@
 
 const courseWindow = document.getElementById('courses');
 
-for (let course of courses) {
+for (let course of courses) { //array of courses
   // Add in each course to the window.
   courseWindow.innerHTML += courseTemplate(course);
 }
