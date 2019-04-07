@@ -33,6 +33,7 @@ Using the marks and weighting of each assessment, update js/templates.js to disp
 Grades are defined as below based on marks:
 
 #### Mark	Grade	Colour
+
 | Mark      | Grade | Colour |
 |-----------|:-----:|--------|
 | 0 - 9     | H     | Red    |
@@ -43,7 +44,7 @@ Grades are defined as below based on marks:
 | 50 - 59   | C     | Orange |
 | 60 - 69   | B     | Green  |
 | 70 - 100  | A     | Green  |
-|   |   |   |
+
 Using the Bootstrap 3 .label class, display the grade next to each mark on all of the assessments in the colour specified per grade.
 
 #### 6. Add in the Overall Grade NO
