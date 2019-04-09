@@ -6,10 +6,12 @@ const assessmentTemplate = function(assessment) {
   <td>${assessment.name}</td>
   <td>${assessment.weight.toPrecision(4) * 100} + '%' </td>
   <td>${assessment.mark}</td>
-  <td>${calculateGradeHelper(assessment.mark)}</td>
+
   </tr>
 
   `
+  // T0DO
+  // <td>${calculateGradeHelper(assessment.mark)}</td>
 }
 
 //TO-DO to display table wih colour codes
@@ -40,11 +42,6 @@ const courseAndReadingListTemplate = function(course) {
 
 }
 
-// const sortReadingList = function (output){
-//   let readA = ''
-//   console.log(output)
-// }
-
 
 const readingListTemplateHelper = function(course){
   let output = ' ';
@@ -55,23 +52,27 @@ const readingListTemplateHelper = function(course){
       value.image = '404.png';
     }
     output += readingListTemplate(value);
+
+    // output += sortedDueDates(course)
   }
   return output
 }
 
 const readingListTemplate = function(read) {
 
-  //3 TO DOlist readinglist in ascending order by date due.
   return `
+
   <div class="reading-list-item">
+
   <p><b>${read.title}</b></p>
   <p> ${read.author}</p>
-  <p>  ${read.dueDate} </p>
   <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
+  <li> ${read.dueDate}</li>
   </div>
   <tr>
-  `;
+  ` ;
 }
+
 
 //4. Show grades based on the marks.
 //display weighting per course , course name and mark available
@@ -86,6 +87,17 @@ const arrayOfPercentages = function(course){
 
   }
   return percentage
+}
+
+const compareDueDates = function(course){
+  let array = []
+  for (index of course.readingList){
+    let date = index.dueDate
+    let sorted = date
+    array.push(date)
+    let a =  array.sort()
+    return a;
+  }
 }
 
 const calculateOverallMark = function (percentages){
@@ -125,6 +137,7 @@ const courseTemplate = function(course) {
   <tbody>
   ${assessmentTemplateHelper(course)}
   ${finalGradeHelper(course)}
+  ${compareDueDates(course)}
 
   </tbody>
   </table>

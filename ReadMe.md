@@ -9,7 +9,8 @@ We're looking for you to demonstrate the following:
  - Your code is easy-to-read / understand.
  - You structure code in a clear, logical & reusable way.
 
-We're going to update a page of a student's course results that is rendered based on some data held in the JavaScript file data.js You can imagine how we might have this data setup to come from an API in a similar format to in this file, and how we would then have a separate view to display to students defined using HTML, CSS & JavaScript.
+We're going to update a page of a student's course results that is rendered based on some data held in the JavaScript file data.js
+You can imagine how we might have this data setup to come from an API in a similar format to in this file, and how we would then have a separate view to display to students defined using HTML, CSS & JavaScript.
 
 This is just using vanilla JS with some ES2015 functionality, so it won't immediately work in older browsers (e.g. IE11). You can also rely on ES2015 functionality if you wish. You may not load in any additional libraries. Do not modify js/data.js.
 
@@ -22,7 +23,7 @@ The weighting should be displayed as a percentage to 2 decimal places. Update js
 #### 2. Display the topics per course.  Yes
 Beneath the course title, display a list of the topics on each course. You can see this data defined for each course in js/data.js. There is a comment noting where this should appear in js/templates.js.
 
-#### 3. Almost Add the reading list per course. Need to fix image thumbnail and sort list
+#### 3.'Add the reading list per course.  YES
 Additionally, list in order the reading list of a course. The output should be in ascending order by the due date. You can see this data for each course in js/data.js. You should display the book title, author, and a thumbnail of the book cover. There is a comment noting where this should appear in js/templates.js.
 
 #### 4. Calculate and display the Overall Course Mark. Yes
@@ -47,8 +48,8 @@ Grades are defined as below based on marks:
 
 Using the Bootstrap 3 .label class, display the grade next to each mark on all of the assessments in the colour specified per grade.
 
-#### 6. Add in the Overall Grade NO
+#### 6. Add in the Overall Grade YES
 Add in the overall grade to be shown next to the overall final course mark that you added in #4.
 
 #### 7. Make the topics & reading list hidden by default, and display on click.  NO
-Make the div that wraps the topics & reading lists that you added in #2 and #3 appear hidden by default. Add a button that appears after each course title to "Show more details". This should toggle the display of this div for each course on click.
+Make the div that wraps the topics & reading lists that you added in #2 and #3 appear 'hidden' by default. Add a button that appears after each course title to "Show more details". This should toggle the display of this div for each course on click.
