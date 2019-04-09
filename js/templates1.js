@@ -17,6 +17,8 @@ const assessmentTemplateHelper = function(course){
   if (course.assessments.length === 0) return `<tr colspan="100%"><td>No assessments found.</td></tr>`;
   for (let assess of course.assessments){
     courses += course.readingList
+
+    // console.log(courses)
     result += assessmentTemplate(assess)
     // readingListTemplateHelper(course)
   }
@@ -32,11 +34,17 @@ const courseAndReadingListTemplate = function(course) {
   `
 
 }
+// const sortReadingList = function (output){
+//   let readA = ''
+//   console.log(output)
+// }
+
 
 const readingListTemplateHelper = function(course){
-  let output = ''
- if ( course.readingList.length ===0) return `<tr colspan="100%"><td>ReadingList Unavailable</td></tr>`;
+  let output = ' ';
+  if ( course.readingList.length ===0) return `<tr colspan="100%" ><td>No readingList available</td></tr>`;
   for (value of course.readingList){
+
     if (value.image === null){
       value.image = '404.png';
     }
@@ -45,18 +53,39 @@ const readingListTemplateHelper = function(course){
   return output
 }
 
+const sortList = function(course){
+  let array = []
+  for (value of course.readingList){
+    array.push(course.readingList)
+    console.log(array)
+    if (value.image === null){
+      value.image = '404.png';
+    }
+  }
+  console.log(array)
+  return array
+}
+
 const readingListTemplate = function(read) {
-  //3 readinglist in ascending order
+
+  //3 list readinglist in ascending order by date due. fix image
   return `
   <div class="reading-list-item">
   <p><b>${read.title}</b></p>
-  <p>By ${read.author}</p>
-  <p>  ${read.image}</p>
+  <p> ${read.author}</p>
+  <p>  ${read.dueDate} </p>
+  <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
   </div>
   <tr>
   `;
 }
 
+const finalGradeMarkHelper = function(course){
+  const percentagesArray = arrayOfPercentages(course)
+  const finalMark = calculateFInalMark(percentagesArray)
+  return finalMark
+  
+}
 //4. Show grades based on the marks.
 //display weighting per course , course name and mark available
 
@@ -79,6 +108,7 @@ const courseTemplate = function(course) {
   </thead>
   <tbody>
   ${assessmentTemplateHelper(course)}
+  ${finalGradeMark(course)}
   </tbody>
   </table>
   `
