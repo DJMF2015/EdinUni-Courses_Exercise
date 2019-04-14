@@ -12,6 +12,7 @@ const calculateGradeHelper = function(grade){
   return `<table><tr><td><tbody>${calculateGrade(grade)}</tbody></td></tr></table>`
 }
 
+//comment could be cleaned up and changed two switch staement or ternary instead of nested if/else's
 const calculateGrade = function(grade){
   if (grade >= 0 && grade <= 09){
     return `${grade} <span class="label label-danger">H</span>`
@@ -44,6 +45,8 @@ const assessmentTemplateHelper = function(course){
   return result;
 }
 
+
+//template helper function for readinglist
 const courseAndReadingListTemplate = function(course) {
   return `
   <h3>Reading List</h3>
@@ -52,8 +55,7 @@ const courseAndReadingListTemplate = function(course) {
   </div>
   `
 }
-
-
+//  loop over the readinglist items
 const readingListTemplateHelper = function(course){
   let output = ' ';
   if ( course.readingList.length ===0) return `<tr colspan="100%" ><td>No readingList available</td></tr>`;
@@ -66,6 +68,8 @@ const readingListTemplateHelper = function(course){
   return output
 }
 
+
+//render reading list items and values with toggle button
 const readingListTemplate = function(read) {
   //write function to loop over and create dom dynamcially
 
@@ -86,15 +90,12 @@ const readingListTemplate = function(read) {
 
 }
 
-
-
 //4. Show grades based on the marks. Display weighting, course and mark
 const arrayOfPercentages = function(course){
   let percentage = []
   for (index of course.assessments){
     let percentagemark = (index.mark / 100) //75
     let percentageweighting =  percentagemark * index.weight  //0.333
-    // console.log(percentageweighting) //0.45
     let overallmark = percentageweighting//"0.63", "0.11", "0.06"]
     percentage.push(overallmark)
 
@@ -150,7 +151,9 @@ const courseTemplate = function(course) {
   ${compareDueDates(course)}
   <table style="width:100%">
   <th rowspan="2">
-  <td><h3><div class="table-colour-wrapper">${finalGradeHelper(course)}</div></h3></td></table>
+  <td><h3><div class="table-colour-wrapper">
+  ${finalGradeHelper(course)}
+  </div></h3></td>
   </tbody>
   </table>
   `

@@ -17,7 +17,8 @@
   width: 500px;
   text-align: left;
 }
-button  {
+
+.button  {
   font: 11px "Open Sans", Arial, sans-serif;
   padding: 5px 30px;
   border:solid limegreen;
