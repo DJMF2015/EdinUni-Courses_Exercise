@@ -21,10 +21,11 @@ Look at all the files and read through all the code before you begin any exercis
 The weighting should be displayed as a percentage to 2 decimal places. Update js/templates.js to do this.
 
 #### 2. Display the topics per course.  Yes
-Beneath the course title, display a list of the topics on each course. You can see this data defined for each course in js/data.js. There is a comment noting where this should appear in js/templates.js.
+Beneath the course title, display a list of the topics on each course. You can see this data defined for each course in js/data.js
 
 #### 3.'Add the reading list per course.  YES
-Additionally, list in order the reading list of a course. The output should be in ascending order by the due date. You can see this data for each course in js/data.js. You should display the book title, author, and a thumbnail of the book cover. There is a comment noting where this should appear in js/templates.js.
+Additionally, list in order the reading list of a course. The output should be in ascending order by the due date.
+You can see this data for each course in js/data.js. You should display the book title, author, and a thumbnail of the book cover.
 
 #### 4. Calculate and display the Overall Course Mark. Yes
 Each assessment has a weighting defining how much that assessment contributes to the overall course.

@@ -1,5 +1,5 @@
 .book-thumbnail {
-  max-width: 35px; /* Only display small images for thumbnails */
+  max-width: 60px; /* Only display small images for thumbnails */
 }
 
 /* Added Reading List Grid for User ease. */
@@ -8,4 +8,18 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+}
+
+.panel {
+  font: 14px "Open Sans", Helvetica, Arial, sans-serif;
+  /* border: 1px solid #22d; */
+  padding: 12px;
+  width: 500px;
+  text-align: left;
+}
+button  {
+  font: 11px "Open Sans", Arial, sans-serif;
+  padding: 5px 30px;
+  border:solid limegreen;
+  border-radius:  10px
 }

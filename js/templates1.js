@@ -62,25 +62,30 @@ const readingListTemplateHelper = function(course){
       value.image = '404.png';
     }
     output += readingListTemplate(value);
-
   }
   return output
 }
 
 const readingListTemplate = function(read) {
+  //write function to loop over and create dom dynamcially
+
+  // document.getElementById("Show").addEventListener("click", function() {
+  //   document.getElementById("display").hidden = true;
+  //   document.getElementById("display").hidden = false;
+  // }, false);
 
   return `
 
-  <div class="reading-list-item">
-
+  <div id="display" class="reading-list-item panel" >
   <p><b>${read.title}</b></p>
   <p> ${read.author}</p>
   <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
-  <li> ${read.dueDate}</li>
+  <p>Due Date: ${read.dueDate}</p>
   </div>
-  <tr>
   ` ;
+
 }
+
 
 
 //4. Show grades based on the marks. Display weighting, course and mark
@@ -98,7 +103,6 @@ const arrayOfPercentages = function(course){
 }
 
 
-//still doesn't output on display
 const compareDueDates = function(course){
   let array = []
   for (index of course.readingList){
@@ -106,8 +110,8 @@ const compareDueDates = function(course){
     let sorted = date
     array.push(date)
     let a =  array.sort()
-    return a;
-  }
+    return a
+  };
 }
 
 const calculateOverallMark = function (percentages){
@@ -144,7 +148,9 @@ const courseTemplate = function(course) {
   <tbody>
   ${assessmentTemplateHelper(course)}
   ${compareDueDates(course)}
-  <table style="width:100%"> <th rowspan="2"><td><h3>${finalGradeHelper(course)}</h3></td></table>
+  <table style="width:100%">
+  <th rowspan="2">
+  <td><h3><div class="table-colour-wrapper">${finalGradeHelper(course)}</div></h3></td></table>
   </tbody>
   </table>
   `
