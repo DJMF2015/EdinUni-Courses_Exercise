@@ -69,7 +69,7 @@ var courses = [
       {
         id: '00040',
         dueDate: '2019-10-22',
-        title: 'An Introduction to Neural Networds',
+        title: 'An Introduction to Neural Networks',
         author: 'Kevin Gurney',
 		    image: null
       }

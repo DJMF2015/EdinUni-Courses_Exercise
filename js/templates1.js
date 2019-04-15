@@ -49,8 +49,9 @@ const assessmentTemplateHelper = function(course){
 //template helper function for readinglist
 const courseAndReadingListTemplate = function(course) {
   return `
-  <h3>Reading List</h3>
+  <h4>Reading List</h4>
   <div class="reading-list-wrapper">
+  ${compareDueDates(course)}
   ${readingListTemplateHelper(course)}
   </div>
   `
@@ -72,6 +73,7 @@ const readingListTemplateHelper = function(course){
 //render reading list items and values with toggle button
 const readingListTemplate = function(read) {
   //write function to loop over and create dom dynamcially
+  let output = ''
 
   // document.getElementById("Show").addEventListener("click", function() {
   //   document.getElementById("display").hidden = true;
@@ -80,11 +82,11 @@ const readingListTemplate = function(read) {
 
   return `
 
-  <div id="display" class="reading-list-item panel" >
+  <div id="display" class="reading-list-item panel " >
   <p><b>${read.title}</b></p>
   <p> ${read.author}</p>
   <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
-  <p>Due Date: ${read.dueDate}</p>
+  <p>Due Date:${read.dueDate}</p>
   </div>
   ` ;
 
@@ -106,14 +108,30 @@ const arrayOfPercentages = function(course){
 
 const compareDueDates = function(course){
   let array = []
-  for (index of course.readingList){
-    let date = index.dueDate
-    let sorted = date
-    array.push(date)
-    let a =  array.sort()
-    return a
-  };
-}
+  let reading = course.readingList
+  // sort by value
+  reading.sort(function (a, b) {
+    // reading.sort = (a, b) => {
+    return a.value - b.value;
+  });
+
+  // sort by dueDate
+  reading.sort(function(a, b) {
+    // reading.sort = (a, b) => {
+    var dateA = a.dueDate;
+    var dateB = b.dueDate;
+    if (dateA < dateB) {
+      return -1;
+    }
+    if (dateA > dateB) {
+      return 1;
+    }
+    // dates must be equal
+    return 0;
+  });
+  array.push(reading)
+  // console.log(array)
+};
 
 const calculateOverallMark = function (percentages){
   //total all weighted percentages
@@ -153,8 +171,10 @@ const courseTemplate = function(course) {
   <th rowspan="2">
   <td><h3><div class="table-colour-wrapper">
   ${finalGradeHelper(course)}
+
   </div></h3></td>
   </tbody>
+
   </table>
   `
 }
