@@ -74,20 +74,18 @@ const readingListTemplateHelper = function(course){
 const readingListTemplate = function(read) {
   //write function to loop over and create dom dynamcially
   let output = ''
-
-  // document.getElementById("Show").addEventListener("click", function() {
-  //   document.getElementById("display").hidden = true;
-  //   document.getElementById("display").hidden = false;
-  // }, false);
-
+  //   document.getElementById("show").addEventListener('click', handleReadingList());
+  // }
+  //
   return `
 
-  <div id="display" class="reading-list-item panel " >
+  <div id="display" class="reading-list-item panel" >
   <p><b>${read.title}</b></p>
   <p> ${read.author}</p>
   <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
   <p>Due Date:${read.dueDate}</p>
   </div>
+
   ` ;
 
 }
@@ -111,15 +109,14 @@ const compareDueDates = function(course){
   let reading = course.readingList
   // sort by value
   reading.sort(function (a, b) {
-    // reading.sort = (a, b) => {
     return a.value - b.value;
   });
 
   // sort by dueDate
   reading.sort(function(a, b) {
-    // reading.sort = (a, b) => {
     var dateA = a.dueDate;
     var dateB = b.dueDate;
+    console.log(dateA, dateB);
     if (dateA < dateB) {
       return -1;
     }
@@ -130,7 +127,6 @@ const compareDueDates = function(course){
     return 0;
   });
   array.push(reading)
-  // console.log(array)
 };
 
 const calculateOverallMark = function (percentages){
@@ -143,13 +139,13 @@ const calculateOverallMark = function (percentages){
 }
 
 
+//5. Calculate and display the overall course mark
 const finalGradeHelper = function(course){
   const percentagesArray = arrayOfPercentages(course)
   let finalMark = calculateOverallMark(percentagesArray);
   return calculateGradeHelper(finalMark.toPrecision(2))
 }
 
-//5. Calculate and display the overall course mark
 const courseTemplate = function(course) {
   return `
   <h3>${course.id}
@@ -171,7 +167,6 @@ const courseTemplate = function(course) {
   <th rowspan="2">
   <td><h3><div class="table-colour-wrapper">
   ${finalGradeHelper(course)}
-
   </div></h3></td>
   </tbody>
 

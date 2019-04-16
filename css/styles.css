@@ -1,5 +1,5 @@
 .book-thumbnail {
-  max-width: 60px; /* Only display small images for thumbnails */
+  max-width: 50px; /* Only display small images for thumbnails */
 }
 
 /* Added Reading List Grid for User ease. */
@@ -15,9 +15,9 @@
 .panel {
   font: 14px "Open Sans", Helvetica, Arial, sans-serif;
   /* border: 1px solid #22d; */
-  padding: 12px;
-  width: 500px;
-  text-align: left;
+  padding: 15px;
+  width: 450px
+  text-align: center;
 }
 
 .button  {
