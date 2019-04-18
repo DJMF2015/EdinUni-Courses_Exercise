@@ -1,8 +1,11 @@
+.margin{
+  margin-left: auto;
+  margin-right: auto;
+}
 .book-thumbnail {
   max-width: 50px; /* Only display small images for thumbnails */
 }
-
-/* Added Reading List Grid for User ease. */
+/* Added Reading List Grid for User ease. */ */
 .reading-list-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -12,19 +15,27 @@
   display: flex;
 }
 
+
 .panel {
   font: 14px "Open Sans", Helvetica, Arial, sans-serif;
-  /* border: 1px solid #22d; */
+  border: 3px solid grey;
+  background-color: lightgrey;
   padding: 15px;
   width: 450px
-  text-align: center;
+  text-align: left;
 }
 
 .button  {
   font: 11px "Open Sans", Arial, sans-serif;
   padding: 5px 30px;
-  margin-left: auto;
-  margin-right: auto;
+
   border:solid limegreen;
   border-radius:  10px
+}
+
+#display{
+  margin: 1%;
+  margin-top: 4px;
+  padding: 50px 0;
+  text-align: center;
 }

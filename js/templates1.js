@@ -36,8 +36,9 @@ const calculateGrade = function(grade){
 // 2. Display the topics per course
 const assessmentTemplateHelper = function(course){
   let result = ''
-  if (course.assessments.length === 0) return
-  `<tr colspan="100%"><td>No assessments found.</td></tr></tabel>`;
+  if (course.assessments.length === 0) {
+    return  `<tr colspan="100%"><td>No assessments found.</td></tr></tabel>`;
+  }
   for (let assess of course.assessments){
     courses += course.readingList
     result += assessmentTemplate(assess)
@@ -58,9 +59,10 @@ const courseAndReadingListTemplate = function(course) {
 }
 //  loop over the readinglist items
 const readingListTemplateHelper = function(course){
-  let output = ' ';
-  if ( course.readingList.length ===0) return `<tr colspan="100%" ><td>No readingList available</td></tr>`;
-  for (value of course.readingList){
+  let output = '';
+  if ( course.readingList.length ===0 )
+  return `<tr colspan="100%"><td>No Readinglist Found.</td></tr></tabel>`;
+  for (let value of course.readingList){
     if (value.image === null){
       value.image = '404.png';
     }
@@ -69,17 +71,12 @@ const readingListTemplateHelper = function(course){
   return output
 }
 
-
 //render reading list items and values with toggle button
 const readingListTemplate = function(read) {
-  //write function to loop over and create dom dynamcially
-  let output = ''
-  //   document.getElementById("show").addEventListener('click', handleReadingList());
-  // }
-  //
+
   return `
 
-  <div id="display" class="reading-list-item panel" >
+  <div id="display" class="reading-list-item panel " >
   <p><b>${read.title}</b></p>
   <p> ${read.author}</p>
   <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
@@ -87,7 +84,6 @@ const readingListTemplate = function(read) {
   </div>
 
   ` ;
-
 }
 
 //4. Show grades based on the marks. Display weighting, course and mark
@@ -108,10 +104,6 @@ const compareDueDates = function(course){
   let array = []
   let reading = course.readingList
   // sort by value
-  reading.sort(function (a, b) {
-    return a.value - b.value;
-  });
-
   // sort by dueDate
   reading.sort(function(a, b) {
     var dateA = a.dueDate;
@@ -148,10 +140,10 @@ const finalGradeHelper = function(course){
 
 const courseTemplate = function(course) {
   return `
+  ${courseAndReadingListTemplate(course)}
   <h3>${course.id}
   ${course.name}</h3>
   <h4>${course.topics}</h4>
-  ${courseAndReadingListTemplate(course)}
   <table class="table">
   <!-- Add Grade & Overall Grade here -->
   <thead>
