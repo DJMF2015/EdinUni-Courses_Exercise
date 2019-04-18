@@ -2,7 +2,7 @@ const assessmentTemplate = function(assessment) {
   return `
   <tr>
   <td>${assessment.name}</td>
-  <td>${assessment.weight.toPrecision(4) * 100} + '%' </td>
+  <td>${assessment.weight.toPrecision(2) * 100} + '%' </td>
   <td>${assessment.mark}</td>
   </tr>
   `
@@ -15,7 +15,7 @@ const calculateGradeHelper = function(grade){
 //comment could be cleaned up and changed two switch staement or ternary instead of nested if/else's
 const calculateGrade = function(grade){
   if (grade >= 0 && grade <= 09){
-    return `${grade} <span class="label label-danger">H</span>`
+    return `${grade} <span class="label label-danger ">H</span>`
   } else if (grade >= 10 && grade <= 19) {
     return `${grade} <span class="label label-danger">G</span>`
   } else if (grade >= 20 && grade <= 29) {
@@ -29,7 +29,7 @@ const calculateGrade = function(grade){
   } else if (grade >= 60 && grade <= 69) {
     return `${grade} <span class="label label-success">B</span>`
   } else if (grade >=  70 && grade <= 100){
-    return `${grade} <span class="label label-success">A</span>`
+    return `${grade} <span class="label label-success ">A</span>`
   }
 }
 
@@ -61,7 +61,7 @@ const courseAndReadingListTemplate = function(course) {
 const readingListTemplateHelper = function(course){
   let output = '';
   if ( course.readingList.length ===0 )
-  return `<tr colspan="100%"><td>No Readinglist Found.</td></tr></tabel>`;
+  return `<tr ><td><b>No Readinglist Found</b></td></tr>`;
   for (let value of course.readingList){
     if (value.image === null){
       value.image = '404.png';
@@ -77,12 +77,14 @@ const readingListTemplate = function(read) {
   return `
 
   <div id="display" class="reading-list-item panel " >
-  <p><b>${read.title}</b></p>
-  <p> ${read.author}</p>
-  <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
+  <input type="text" value="Show more details">
+  <div id="content">
+  <p>${read.title}</p>
+  <p>${read.author}</p>
   <p>Due Date:${read.dueDate}</p>
+  <img class="book-thumbnail" src= "images/${read.image}" alt="images/404.png">
   </div>
-
+  </div>
   ` ;
 }
 
@@ -103,7 +105,6 @@ const arrayOfPercentages = function(course){
 const compareDueDates = function(course){
   let array = []
   let reading = course.readingList
-  // sort by value
   // sort by dueDate
   reading.sort(function(a, b) {
     var dateA = a.dueDate;
@@ -130,7 +131,6 @@ const calculateOverallMark = function (percentages){
   return total * 100
 }
 
-
 //5. Calculate and display the overall course mark
 const finalGradeHelper = function(course){
   const percentagesArray = arrayOfPercentages(course)
@@ -141,7 +141,7 @@ const finalGradeHelper = function(course){
 const courseTemplate = function(course) {
   return `
   ${courseAndReadingListTemplate(course)}
-  <h3>${course.id}
+  <h3>${course.id}</br>
   ${course.name}</h3>
   <h4>${course.topics}</h4>
   <table class="table">
@@ -155,11 +155,11 @@ const courseTemplate = function(course) {
   <tbody>
   ${assessmentTemplateHelper(course)}
   ${compareDueDates(course)}
-  <table style="width:100%">
+  <table>
   <th rowspan="2">
-  <td><h3><div class="table-colour-wrapper">
+  <td><h2><div class="table-colour-wrapper">
   ${finalGradeHelper(course)}
-  </div></h3></td>
+  </div></h2></td>
   </tbody>
 
   </table>
