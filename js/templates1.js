@@ -29,7 +29,7 @@ const calculateGrade = function(grade){
   } else if (grade >= 60 && grade <= 69) {
     return `${grade} <span class="label label-success">B</span>`
   } else if (grade >=  70 && grade <= 100){
-    return `${grade} <span class="label label-success ">A</span>`
+    return `${grade} <span class="label label-success"">A</span>`
   }
 }
 
@@ -107,8 +107,8 @@ const compareDueDates = function(course){
   let reading = course.readingList
   // sort by dueDate
   reading.sort(function(a, b) {
-    var dateA = a.dueDate;
-    var dateB = b.dueDate;
+    let dateA = a.dueDate;
+    let dateB = b.dueDate;
     console.log(dateA, dateB);
     if (dateA < dateB) {
       return -1;
